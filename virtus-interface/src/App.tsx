@@ -12,7 +12,7 @@ function App() {
   const [liquidity, setLiquidity] = useState(0);
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
-  const { isConnected, address } = useAccount();
+  const { isConnected } = useAccount();
   const fullText = "GET YOUR PASSPORT RIGHT NOW & LEARN ENGLISH";
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function App() {
     const totalNft = 200;
     const totalUsers = 500;
 
-    const countUp = (setter, target, duration) => {
+    const countUp = (setter:(value: number) => void, target:number, duration:number) => {
       let start = 0;
       const step = Math.ceil(target / (duration / 50)); 
       const timer = setInterval(() => {
@@ -39,7 +39,7 @@ function App() {
     setLiquidity(initialLiquidity);
 
     countUp(setStudentCount, totalStudents, 2000); 
-    countUp((value) => {
+    countUp((value: number) => {
       const formattedValue = Math.floor(value / 1000000);
       setLiquidity(formattedValue);
     }, totalLiquidity, 3000); 
