@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         "primary": ['Rammetto One', 'sans-serif']
+      },
+      backgroundImage: {
+         'squares': "url('./assets/square.png')"
       }
     },
   },

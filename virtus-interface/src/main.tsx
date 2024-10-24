@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
   const metadata = {
     name: 'AppKit',
     description: 'AppKit Example',
-    url: 'http://localhost:5174/',
+    url: 'http://localhost:5173/',
     icons: [ " "]
   }
 
