@@ -114,7 +114,6 @@ function App() {
               <p className="font-primary text-white flex items-center gap-2">
                 50 USDT 
                 <img className="w-7" src={Usdt} alt="usdt-coin" />
-                <a href=""></a>
               </p>
             </div>
             {   isConnected ?
