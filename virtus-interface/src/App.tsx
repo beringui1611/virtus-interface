@@ -67,43 +67,47 @@ function App() {
         </button>
       </div>
 
-      <article className="mt-10">
-        <div className="flex flex-col">
-          <h1 className="font-primary text-white text-2xl text-center w-[300px]">
+      <article className="mt-10 lg:flex">
+        <div className="flex flex-col p-2">
+          <h1 className="font-primary text-white text-2xl text-center w-auto lg:w-[700px] lg:text-4xl">
             {fullText}
           </h1>
-          <Link to="section-buy" smooth={true} duration={800} className="bg-[#E748D8] rounded-tr-xl rounded-sm ml-5 mt-5 p-1 
+          <p className="lg:w-6/12 lg:ml-10 text-white mt-2 lg:text-xl">
+          With our exclusive NFT, you'll not only master English, but also gain access to an immersive experience that will take you into a vast ecosystem in the metaverse. Here, you can interact with other users, participate in educational events, and even make real-world purchases using your tokens. Furthermore, our virtual environment provides networking opportunities and collaborative learning, allowing you to practice 
+          your language skills in a practical and enjoyable way – all in one place!
+          </p>
+          <Link to="section-buy" smooth={true} duration={800} className="bg-[#E748D8] rounded-tr-xl rounded-sm ml-5 lg:ml-20 flex items-center justify-center mt-5 p-1 
               text-white font-bold w-32">
             Buy Now
           </Link>
         </div>
         <div className="absolute top-72 right-0 w-20 h-20 blur-xl bg-[#138471]"></div>
-        <div className="h-[550px]">
-          <img className="mt-[80px] z-10 absolute" src={Student} alt="student-virtus" />
-          <img className="absolute" src={Square} />
+        <div className="h-[550px] lg:h-[700px]">
+          <img className="mt-[80px] z-10 absolute lg:w-[700px] lg:right-0 lg:mt-[0px]" src={Student} alt="student-virtus" />
+          <img className="absolute lg:right-0 lg:w-[1000px]" src={Square} />
         </div>
       </article>
 
       <article>
-        <div className="flex items-center p-2 justify-center font-primary">
+        <div className="flex items-center p-2 justify-center font-primary lg:mt-20 lg:gap-20">
           <div className="flex flex-col items-center">
-            <h4 className="text-xl text-white">{liquidity}M</h4>
+            <h4 className="text-xl text-white lg:text-3xl">{liquidity}M</h4>
             <label className="text-[12px] text-[#38F682]">Liquidity</label>
           </div>
           <hr className="border-[#38F682] rotate-90 w-10"></hr>
           <div className="flex flex-col items-center">
-            <h4 className="text-xl text-white">{nftCount}</h4>
+            <h4 className="text-xl text-white lg:text-3xl">{nftCount}</h4>
             <label className="text-[12px] text-[#38F682]">NFT's Mintable</label>
           </div>
           <hr className="border-[#38F682] rotate-90 w-10"></hr>
           <div className="flex flex-col items-center">
-            <h4 className="text-xl text-white">{userCount}</h4>
+            <h4 className="text-xl text-white lg:text-3xl">{userCount}</h4>
             <label className="text-[12px] text-[#38F682]">Total Users</label>
           </div>
         </div>
 
         <div id="section-buy" className="flex flex-col justify-center items-center mt-20">
-          <img className="w-10/12" src={NFTasset} alt="NFT asset" />
+          <img className="w-10/12 lg:w-[500px]" src={NFTasset} alt="NFT asset" />
           <div className="grid grid-cols-2 gap-10 items-center">
             <div>
               <label className="text-white font-bold">Current Price</label>
@@ -122,7 +126,7 @@ function App() {
             
           </div>
 
-          <article className="w-10/12 border-2 h-96 mt-20 rounded-xl border-[#38f682]">
+          <article className="w-10/12 border-2 h-auto mt-20 rounded-xl border-[#38f682]">
             <div className="flex flex-col items-center mt-10 p-2">
               <h3 className="font-primary text-2xl text-white">
                 Virtus Citizen #1
