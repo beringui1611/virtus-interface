@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
   const metadata = {
     name: 'AppKit',
     description: 'AppKit Example',
-    url: 'http://localhost:5173/',
+    url: 'https://virtus-interface.vercel.app/',
     icons: [ " "]
   }
 
