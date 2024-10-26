@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CardPeople from "./assets/cardstudents.png";
 import Square from "./assets/square.png";
 import Student from "./assets/student.png";
-import NFTasset from './assets/nftasset.png';
+import NFTasset from './assets/nftasset.webp';
 import Usdt from './assets/usdt.png';
 import { Link } from 'react-scroll';
 import {useAccount} from "wagmi";
@@ -83,13 +83,13 @@ function App() {
         </div>
         <div className="absolute top-72 right-0 w-20 h-20 blur-xl bg-[#138471]"></div>
         <div className="h-[550px] lg:h-[700px]">
-          <img className="mt-[80px] z-10 absolute lg:w-[700px] lg:right-0 lg:mt-[0px]" src={Student} alt="student-virtus" />
+          <img className="mt-[80px] z-10 absolute lg:w-[700px] lg:right-0 lg:mt-[100px]" src={Student} alt="student-virtus" />
           <img className="absolute lg:right-0 lg:w-[1000px]" src={Square} />
         </div>
       </article>
 
       <article>
-        <div className="flex items-center p-2 justify-center font-primary lg:mt-20 lg:gap-20">
+        <div className="flex items-center p-2 justify-center font-primary lg:mt-56 lg:gap-20">
           <div className="flex flex-col items-center">
             <h4 className="text-xl text-white lg:text-3xl">{liquidity}M</h4>
             <label className="text-[12px] text-[#38F682]">Liquidity</label>
@@ -132,7 +132,7 @@ function App() {
                 Virtus Citizen #1
               </h3>
               <p><span className="font-bold text-[#38F682]">owned by </span><span className="font-bold text-[#E748D8]">on virtus</span></p>
-              <text className="text-white mt-8">
+              <text className="text-white mt-8 lg:w-6/12 lg:text-center">
                 With our exclusive NFT, you'll master English while exploring a vast 
                 ecosystem in the metaverse, where you can even make real-world purchases – 
                 all in one place!
