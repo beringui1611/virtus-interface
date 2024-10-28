@@ -12,7 +12,7 @@ import abinft from './abi/abinft.json';
 
 function App() {
   const [studentCount, setStudentCount] = useState(0);
-  const [liquidity, setLiquidity] = useState<string>("");
+  const [liquidity, setLiquidity] = useState<string>("0");
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [step, setStep] = useState(0);
@@ -23,12 +23,6 @@ function App() {
   const CONTRACT_NFT ="0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4";
     
   const {writeContract} = useWriteContract();
-
-  const result = useReadContract({
-    abi: abinft,
-    address: CONTRACT_NFT,
-    functionName: '_nextTokenId'
-  })
 
   const handleApprove = async () => {
     try {
@@ -60,7 +54,14 @@ function App() {
     }
   }
 
+  const result = useReadContract({
+    abi: abinft,
+    address: CONTRACT_NFT,
+    functionName: '_nextTokenId'
+  });
+
   useEffect(() => {
+    
     const totalStudents = Number(result.data);
     const totalLiquidity = Number(result.data);
     const totalNft = Number(result.data);
