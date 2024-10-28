@@ -5,18 +5,20 @@ import { createAppKit } from '@reown/appkit/react';
 import { WagmiProvider } from 'wagmi';
 import { polygonAmoy } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import "./input.css";
 
 
   const queryClient = new QueryClient();
 
-  const projectId = import.meta.env.VITE_API_KEY;
+  const projectId = `${import.meta.env.VITE_API_KEY}`;
 
   const metadata = {
-    name: 'Virtus Metaverse',
-    description: 'Virtush your school english in metaverse!🚀',
-    url: 'https://virtush.vercel.app/',
+    name: 'AppKit',
+    description: 'AppKit Example',
+    url: 'https://virtuscoin.org/',
     icons: ['']
   }
 
@@ -25,7 +27,7 @@ import "./input.css";
   const wagmiAdapter = new WagmiAdapter({
     networks,
     projectId,
-    ssr:true
+    ssr: true,
   });
   
 
@@ -34,6 +36,7 @@ import "./input.css";
     networks: [polygonAmoy],
     projectId,
     metadata,
+    allWallets: 'SHOW',
     features: {
       analytics: true
     }
