@@ -7,11 +7,11 @@ import { polygonAmoy } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import "./input.css";
-import dotenv from 'dotenv';
-dotenv.config();
 
-const queryClient = new QueryClient();
-  const projectId = `${process.env.REACT_APP_KEY}`;
+
+  const queryClient = new QueryClient();
+
+  const projectId = import.meta.env.VITE_API_KEY;
 
   const metadata = {
     name: 'AppKit',
