@@ -14,10 +14,10 @@ import "./input.css";
   const projectId = import.meta.env.VITE_API_KEY;
 
   const metadata = {
-    name: 'AppKit',
-    description: 'AppKit Example',
+    name: 'Virtus Metaverse',
+    description: 'Virtush your school english in metaverse!🚀',
     url: 'https://virtush.vercel.app/',
-    icons: [ "https://virtush.vercel.app/assets/nftasset-Bwxklj9w.webp"]
+    icons: ['']
   }
 
   const networks = [polygonAmoy];
