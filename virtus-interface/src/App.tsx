@@ -90,8 +90,7 @@ function App() {
       }
       else if(value >= 1_000){
         return `${value / 1000} K`
-      }
-      else if(value <= 999){
+      }else{
         return `${value}$`
       }
     }
