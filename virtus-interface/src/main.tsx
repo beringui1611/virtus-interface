@@ -16,8 +16,8 @@ import "./input.css";
   const metadata = {
     name: 'AppKit',
     description: 'AppKit Example',
-    url: 'https://virtus-interface.vercel.app/',
-    icons: [ " "]
+    url: 'https://virtush.vercel.app/',
+    icons: [ "https://virtush.vercel.app/assets/nftasset-Bwxklj9w.webp"]
   }
 
   const networks = [polygonAmoy];
