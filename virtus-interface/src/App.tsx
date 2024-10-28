@@ -5,29 +5,74 @@ import Student from "./assets/student.png";
 import NFTasset from './assets/nftasset.webp';
 import Usdt from './assets/usdt.png';
 import { Link } from 'react-scroll';
-import {useAccount} from "wagmi";
+import {useAccount, useWriteContract, useReadContract} from "wagmi";
+import { ethers } from "ethers";
+import abiusdt from './abi/abiusdt.json';
+import abinft from './abi/abinft.json';
 
 function App() {
   const [studentCount, setStudentCount] = useState(0);
-  const [liquidity, setLiquidity] = useState(0);
+  const [liquidity, setLiquidity] = useState<string>("");
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
-  const { isConnected } = useAccount();
+  const [step, setStep] = useState(0);
+  const {address, isConnected } = useAccount();
   const fullText = "GET YOUR PASSPORT RIGHT NOW & LEARN ENGLISH";
 
+  const CONTRACT_USDT="0x68c7f6e29a4E171F088111Cd96BA84219f14B70e";
+  const CONTRACT_NFT ="0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4";
+    
+  const {writeContract} = useWriteContract();
+
+  const result = useReadContract({
+    abi: abinft,
+    address: CONTRACT_NFT,
+    functionName: '_nextTokenId'
+  })
+
+  const handleApprove = async () => {
+    try {
+        writeContract({
+          address: CONTRACT_USDT,
+          abi: abiusdt,
+          functionName: 'approve',
+          args:['0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4', ethers.parseUnits("50", 18)]
+        });
+
+        setInterval(() => setStep(1), 2000);
+    }catch(err){
+      return err;
+    }
+  }
+
+  const handleBuy = async () => {
+    try {
+        await writeContract({
+          address: CONTRACT_NFT,
+          abi: abinft,
+          functionName: 'buy',
+          args: [address, ethers.parseUnits("50", 18)]
+        })
+        await setStep(0);
+      }
+    catch(err){
+      return err;
+    }
+  }
+
   useEffect(() => {
-    const totalStudents = 500;
-    const totalLiquidity = 189000000; // 189M
-    const totalNft = 200;
-    const totalUsers = 500;
+    const totalStudents = Number(result.data);
+    const totalLiquidity = Number(result.data);
+    const totalNft = Number(result.data);
+    const totalUsers = Number(result.data);
 
     const countUp = (setter:(value: number) => void, target:number, duration:number) => {
       let start = 0;
-      const step = Math.ceil(target / (duration / 50)); 
+      const step = Math.ceil(target / (duration / 50));
       const timer = setInterval(() => {
         if (start < target) {
           start += step;
-          if (start > target) start = target; 
+          if (start > target) start = target;
           setter(start);
         } else {
           clearInterval(timer);
@@ -35,24 +80,30 @@ function App() {
       }, 50);
     };
 
-    const initialLiquidity = Math.ceil(totalLiquidity * 0.9);
-    setLiquidity(initialLiquidity);
-
-    countUp(setStudentCount, totalStudents, 2000); 
-    countUp((value: number) => {
-      const formattedValue = Math.floor(value / 1000000);
-      setLiquidity(formattedValue);
-    }, totalLiquidity, 3000); 
-    countUp(setNftCount, totalNft, 2000);
+    countUp(setStudentCount, totalStudents, 2000);
     countUp(setUserCount, totalUsers, 2000);
-  }, []);
+    countUp(setNftCount, totalNft, 2000);
 
+    function format(value:number){
+      if(value >= 1_000_000){
+        return `${value / 10000000}M`
+      }
+      else if(value >= 1_000){
+        return `${value / 1000} K`
+      }
+      else if(value <= 999){
+        return `${value}$`
+      }
+    }
+
+    countUp((value) => setLiquidity(String(format(value))), Number(totalLiquidity  *50), 3000);
+  },[]);
 
 
   return (
     <section className='bg-[#102A2B] h-auto'>
       <div className="absolute w-20 h-20 blur-xl bg-[#138471]"></div>
-      <div className="flex justify-between items-center p-5">
+      <div className="flex justify-between items-center p-5 lg:p-10">
         <div className="flex flex-col gap-2">
           <img className="max-w-32 z-10" src={CardPeople} alt="students-photo-card" />
           <label className="font-primary text-white z-10">{studentCount} Students</label>
@@ -82,16 +133,16 @@ function App() {
           </Link>
         </div>
         <div className="absolute top-72 right-0 w-20 h-20 blur-xl bg-[#138471]"></div>
-        <div className="h-[550px] lg:h-[700px]">
-          <img className="mt-[80px] z-10 absolute lg:w-[700px] lg:right-0 lg:mt-[100px]" src={Student} alt="student-virtus" />
-          <img className="absolute lg:right-0 lg:w-[1000px]" src={Square} />
+        <div className="h-[550px] lg:h-[700px] md:h-[700px]">
+          <img className="mt-[80px] z-10 absolute lg:w-[600px] lg:right-0 lg:mt-[150px] md:h-[600px]" src={Student} alt="student-virtus" />
+          <img className="absolute lg:right-0 lg:w-[900px] lg:mt-44" src={Square} />
         </div>
       </article>
 
       <article>
-        <div className="flex items-center p-2 justify-center font-primary lg:mt-56 lg:gap-20">
+        <div className="flex items-center p-2 justify-center font-primary lg:mt-56 lg:gap-20 md:mt-56">
           <div className="flex flex-col items-center">
-            <h4 className="text-xl text-white lg:text-3xl">{liquidity}M</h4>
+            <h4 className="text-xl text-white lg:text-3xl">{liquidity}</h4>
             <label className="text-[12px] text-[#38F682]">Liquidity</label>
           </div>
           <hr className="border-[#38F682] rotate-90 w-10"></hr>
@@ -117,13 +168,18 @@ function App() {
               </p>
             </div>
             {   isConnected ?
-                <button className="bg-[#E748D8] rounded-tr-xl rounded-sm h-10 text-white font-primary">
-                Buy Now
-              </button>
+
+                step === 0 ?
+                <button onClick={handleApprove} className="bg-[#E748D8] rounded-tr-xl rounded-sm h-10 text-white font-primary">
+                  Approve
+                </button>
+                
+                : <button onClick={handleBuy} className="bg-[#E748D8] rounded-tr-xl rounded-sm h-10 text-white font-primary">
+                  Buy Now
+                </button>
               :
               <w3m-button/>
             }
-            
           </div>
 
           <article className="w-10/12 border-2 h-auto mt-20 rounded-xl border-[#38f682]">
