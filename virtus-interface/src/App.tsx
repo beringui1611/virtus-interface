@@ -193,11 +193,11 @@ function App() {
                 Virtus Citizen #1
               </h3>
               <p><span className="font-bold text-[#38F682]">owned by </span><span className="font-bold text-[#E748D8]">on virtus</span></p>
-              <text className="text-white mt-8 lg:w-6/12 lg:text-center">
+              <p className="text-white mt-8 lg:w-6/12 lg:text-center">
                 With our exclusive NFT, you'll master English while exploring a vast 
                 ecosystem in the metaverse, where you can even make real-world purchases – 
                 all in one place!
-              </text>
+              </p>
 
               <a href="/" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
                   items-center justify-center text-white font-primary">
