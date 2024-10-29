@@ -32,9 +32,8 @@ createAppKit({
   projectId: projectId,
   metadata,
   features: {
-    analytics: false,
+    analytics: true,
   },
-  defaultNetwork: polygonAmoy
 });
 
 createRoot(document.getElementById('root')!).render(
