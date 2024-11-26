@@ -3,6 +3,7 @@ import CardPeople from "./assets/cardstudents.png";
 import Square from "./assets/square.png";
 import Student from "./assets/student.png";
 import NFTasset from './assets/nftasset.webp';
+import Certified from './assets/certified.png';
 import Usdt from './assets/usdt.png';
 import { Link } from 'react-scroll';
 import {useAccount, useWriteContract, useReadContract} from "wagmi";
@@ -10,13 +11,15 @@ import { ethers } from "ethers";
 import abiusdt from './abi/abiusdt.json';
 import abinft from './abi/abinft.json';
 
+const CONTRACT_USDT="0xa7628e0C67f1FC73c061ABDF90d3fA26Aa20988D";
+const CONTRACT_NFT ="0x668F6601F634f0CeC5cd58B74ef4EbFda4705c92";
+
 function useNextTokenId() {
   const result = useReadContract({
     abi: abinft,
-    address: "0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4", // Substitua por sua variável de contrato, se necessário
-    functionName: '_nextTokenId'
+    address: CONTRACT_NFT,
+    functionName: 'totalSupply'
   });
-
   return result.data;
 }
 
@@ -25,26 +28,20 @@ function App() {
   const [liquidity, setLiquidity] = useState<string>("0");
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
-  const [step, setStep] = useState(0);
   const {address, isConnected } = useAccount();
   const fullText = "GET YOUR PASSPORT RIGHT NOW & LEARN ENGLISH";
-
-  const CONTRACT_USDT="0x68c7f6e29a4E171F088111Cd96BA84219f14B70e";
-  const CONTRACT_NFT ="0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4";
     
   const {writeContract} = useWriteContract();
   const nextTokenId = useNextTokenId();
 
   const handleApprove = async () => {
     try {
-        writeContract({
+        await writeContract({
           address: CONTRACT_USDT,
           abi: abiusdt,
           functionName: 'approve',
-          args:['0x0Dd83D6CBf5246Aa01954fD2037fE0f47E2c6bb4', ethers.parseUnits("50", 18)]
+          args:[CONTRACT_NFT, ethers.parseUnits("50", 18)]
         });
-
-        setInterval(() => setStep(1), 2000);
     }catch(err){
       return err;
     }
@@ -58,9 +55,9 @@ function App() {
           functionName: 'buy',
           args: [address, ethers.parseUnits("50", 18)]
         })
-        await setStep(0);
       }
     catch(err){
+      console.log(err)
       return err;
     }
   }
@@ -172,19 +169,14 @@ function App() {
                 <img className="w-7" src={Usdt} alt="usdt-coin" />
               </p>
             </div>
-            {   isConnected ?
-
-                step === 0 ?
-                <button onClick={handleApprove} className="bg-[#E748D8] rounded-tr-xl rounded-sm h-10 text-white font-primary">
-                  Approve
-                </button>
-                
-                : <button onClick={handleBuy} className="bg-[#E748D8] rounded-tr-xl rounded-sm h-10 text-white font-primary">
-                  Buy Now
-                </button>
-              :
+            {isConnected ? (
+               <div className="flex flex-col mt-10 gap-2">
+                  <button onClick={handleApprove} className="bg-[#E748D8] rounded-tr-xl rounded-sm p-2 text-white font-bold w-32">Approve</button>
+                  <button onClick={handleBuy} className="bg-[#E748D8] rounded-tr-xl rounded-sm p-2 text-white font-bold w-32">Buy Now</button>
+               </div>
+            ) : (
               <w3m-button/>
-            }
+            )}
           </div>
 
           <article className="w-10/12 border-2 h-auto mt-20 rounded-xl border-[#38f682]">
@@ -206,6 +198,20 @@ function App() {
             </div>
           </article>
         </div>
+      </article>
+
+      <article className="h-auto md:flex md:justify-center">
+         <div className=" p-5 mt-10">
+          <h3 className="text-[#38F682] font-primary text-xl">COMMUNITY DRIVEN</h3>
+          <p className="font-semibold text-white flex">
+            Our smart contract was developed by Next Chain, check out our code in the github repository 
+          </p>
+          <a className="underline text-blue-600 font-bold text-md" href="https://github.com/nxchaindotlink/virtush-contract">
+            NextChain github
+          </a>
+           <img className="rounded-xl mt-10"  src={Certified} alt="nxchain.link"/>
+           <a href="https://nxchain.link" className="text-white flex underline flex-col font-bold">Verify certification on Next Chain WebSite<span>Code: 10001</span></a>
+         </div>
       </article>
     </section>
   );
