@@ -36,7 +36,7 @@ function App() {
 
   const handleApprove = async () => {
     try {
-        await writeContract({
+        writeContract({
           address: CONTRACT_USDT,
           abi: abiusdt,
           functionName: 'approve',
@@ -49,7 +49,7 @@ function App() {
 
   const handleBuy = async () => {
     try {
-        await writeContract({
+        writeContract({
           address: CONTRACT_NFT,
           abi: abinft,
           functionName: 'buy',
