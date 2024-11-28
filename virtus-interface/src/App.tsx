@@ -11,8 +11,8 @@ import { ethers } from "ethers";
 import abiusdt from './abi/abiusdt.json';
 import abinft from './abi/abinft.json';
 
-const CONTRACT_USDT="0xa7628e0C67f1FC73c061ABDF90d3fA26Aa20988D";
-const CONTRACT_NFT ="0x668F6601F634f0CeC5cd58B74ef4EbFda4705c92";
+const CONTRACT_USDT="0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
+const CONTRACT_NFT ="0x6cE23464D98A0Cb7ff15ba7954885aDb3b075BD1";
 
 function useNextTokenId() {
   const result = useReadContract({
@@ -40,7 +40,7 @@ function App() {
           address: CONTRACT_USDT,
           abi: abiusdt,
           functionName: 'approve',
-          args:[CONTRACT_NFT, ethers.parseUnits("50", 18)]
+          args:[CONTRACT_NFT, ethers.parseUnits("50", 6)]
         });
     }catch(err){
       return err;
@@ -53,7 +53,7 @@ function App() {
           address: CONTRACT_NFT,
           abi: abinft,
           functionName: 'buy',
-          args: [address, ethers.parseUnits("50", 18)]
+          args: [address, ethers.parseUnits("50", 6)]
         })
       }
     catch(err){
@@ -111,13 +111,13 @@ function App() {
           <label className="font-primary text-white z-10">{studentCount} Students</label>
         </div>
 
-        <button
+        <a href="https://samuelrmferreira.wixsite.com/virtuscoin"
           className="
             border-2 rounded-tr-xl rounded-sm text-sm
             text-white p-1 h-10 border-[#38F682]
             shadow-md shadow-[#38f682] font-bold">
           Visit our website
-        </button>
+        </a>
       </div>
 
       <article className="mt-10 lg:flex">

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { createAppKit } from '@reown/appkit/react';
 import { WagmiProvider } from 'wagmi';
-import { polygonAmoy } from '@reown/appkit/networks';
+import { polygon } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import "./input.css";
@@ -14,11 +14,11 @@ const projectId = `${import.meta.env.VITE_API_KEY}`;
 const metadata = {
   name: 'Virtus',
   description: 'Virtush your new method to learn english!',
-  url: 'http://localhost:5173/',
+  url: 'https://virtus-interface.vercel.app',
   icons: ['']
 };
 
-const networks = [polygonAmoy];
+const networks = [polygon];
 
 const wagmiAdapter = new WagmiAdapter({
   networks,
@@ -28,7 +28,7 @@ const wagmiAdapter = new WagmiAdapter({
 
 createAppKit({
   adapters: [wagmiAdapter],
-  networks: [polygonAmoy],
+  networks: [polygon],
   projectId: projectId,
   metadata,
   features: {
