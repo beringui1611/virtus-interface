@@ -14,7 +14,7 @@ const projectId = `${import.meta.env.VITE_API_KEY}`;
 const metadata = {
   name: 'Virtus',
   description: 'Virtush your new method to learn english!',
-  url: 'https://virtuscoin.org',
+  url: 'https://virtus-interface.vercel.app',
   icons: ['']
 };
 
