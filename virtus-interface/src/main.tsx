@@ -15,7 +15,7 @@ const metadata = {
   name: 'Virtus',
   description: 'Virtush your new method to learn english!',
   url: 'https://virtuscoin.org/',
-  icons: ['']
+  icons: [''], 
 };
 
 const networks = [polygon];
@@ -23,6 +23,7 @@ const networks = [polygon];
 const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId: projectId,
+  
 });
 
 createAppKit({
@@ -34,7 +35,7 @@ createAppKit({
     analytics: true,
     socials:false,
     email:false,
-  },  
+  },
 });
 
 createRoot(document.getElementById('root')!).render(
