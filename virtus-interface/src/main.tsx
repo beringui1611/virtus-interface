@@ -30,13 +30,11 @@ createAppKit({
   networks: [polygon],
   projectId: projectId,
   metadata,
-  // features: {
-  //   analytics: true,
-  //   socials:false,
-  //   email:false,
-  // },
-  defaultNetwork: polygon
-  
+  features: {
+    analytics: true,
+    socials:false,
+    email:false,
+  },  
 });
 
 createRoot(document.getElementById('root')!).render(
