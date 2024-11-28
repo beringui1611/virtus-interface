@@ -23,7 +23,6 @@ const networks = [polygon];
 const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId: projectId,
-  ssr: true,
 });
 
 createAppKit({
