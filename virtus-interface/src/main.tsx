@@ -32,7 +32,11 @@ createAppKit({
   metadata,
   features: {
     analytics: true,
+    socials:false,
+    email:false,
   },
+  defaultNetwork: polygon
+  
 });
 
 createRoot(document.getElementById('root')!).render(
