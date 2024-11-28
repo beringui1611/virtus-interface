@@ -36,6 +36,7 @@ createAppKit({
     socials:false,
     email:false,
   },
+  defaultNetwork: polygon
 });
 
 createRoot(document.getElementById('root')!).render(
