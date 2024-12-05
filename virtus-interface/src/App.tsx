@@ -111,7 +111,7 @@ function App() {
           <label className="font-primary text-white z-10">{studentCount} Students</label>
         </div>
 
-        <a href="https://samuelrmferreira.wixsite.com/virtuscoin"
+        <a href="https://campelobrasil.wixsite.com/virtuscoin"
           className="
             border-2 rounded-tr-xl rounded-sm text-sm
             text-white p-1 h-10 border-[#38F682]
@@ -191,7 +191,7 @@ function App() {
                 all in one place!
               </p>
 
-              <a href="/" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
+              <a href="https://campelobrasil.wixsite.com/virtuscoin" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
                   items-center justify-center text-white font-primary">
                 Learn more
               </a>
