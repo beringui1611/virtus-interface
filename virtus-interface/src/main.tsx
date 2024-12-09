@@ -16,7 +16,7 @@ const metadata = {
   name: 'Virtus',
   description: 'Virtush your new method to learn english!',
   url: 'https://payment.virtuscoin.org/',
-  icons: [''], 
+  icons: ['https://payment.virtuscoin.org/assets/nftasset-Bwxklj9w.webp'], 
 };
 
 const connectors: CreateConnectorFn[] = [];
