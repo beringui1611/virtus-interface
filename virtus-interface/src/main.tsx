@@ -14,8 +14,9 @@ const projectId = `${import.meta.env.VITE_API_KEY}`;
 const metadata = {
   name: 'Virtus',
   description: 'Virtush your new method to learn english!',
-  url: 'https://payment.virtuscoin.org',
+  url: 'https://payment.virtuscoin.org/',
   icons: [''], 
+  redirect: "https://payment.virtuscoin.org/"
 };
 
 const networks = [polygon];
