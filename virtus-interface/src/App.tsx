@@ -191,7 +191,7 @@ function App() {
                 all in one place!
               </p>
 
-              <a href="https://virtus-pdf.s3.us-east-1.amazonaws.com/VIRTUS+WHITEPAPER+4.0.pdf" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
+              <a href="https://www.virtuscoin.org/white-paper" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
                   items-center justify-center text-white font-primary">
                 Learn more
               </a>
