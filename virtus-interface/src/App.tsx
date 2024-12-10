@@ -126,8 +126,14 @@ function App() {
             {fullText}
           </h1>
           <p className="lg:w-6/12 lg:ml-10 text-white mt-2 lg:text-xl">
-          With our exclusive NFT, you'll not only master English, but also gain access to an immersive experience that will take you into a vast ecosystem in the metaverse. Here, you can interact with other users, participate in educational events, and even make real-world purchases using your tokens. Furthermore, our virtual environment provides networking opportunities and collaborative learning, allowing you to practice 
-          your language skills in a practical and enjoyable way – all in one place!
+              With our exclusive NFT, you will not only master English, but you 
+              will also have access to an immersive experience that will take you 
+              to a vast ecosystem in the metaverse.     
+              Here you will be able to interact with other users, participate in 
+              educational events and even make purchases in the real world using your tokens.     
+              Additionally, our future virtual environment will offer networking and collaborative 
+              learning opportunities, allowing you to practice your 
+              language skills in a practical and enjoyable way – all in one place!
           </p>
           <Link to="section-buy" smooth={true} duration={800} className="bg-[#E748D8] rounded-tr-xl rounded-sm ml-5 lg:ml-20 flex items-center justify-center mt-5 p-1 
               text-white font-bold w-32">
