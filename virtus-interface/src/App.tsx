@@ -10,6 +10,7 @@ import {useAccount, useWriteContract, useReadContract} from "wagmi";
 import { ethers } from "ethers";
 import abiusdt from './abi/abiusdt.json';
 import abinft from './abi/abinft.json';
+import { useTranslation } from "react-i18next";
 
 const CONTRACT_USDT="0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
 const CONTRACT_NFT ="0x6cE23464D98A0Cb7ff15ba7954885aDb3b075BD1";
@@ -29,10 +30,20 @@ function App() {
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const {address, isConnected } = useAccount();
-  const fullText = "GET YOUR PASSPORT RIGHT NOW & LEARN ENGLISH";
-    
+  const [state, setState] = useState(false);
   const {writeContract} = useWriteContract();
   const nextTokenId = useNextTokenId();
+  const { t } = useTranslation();
+  const fullText = `${t("home.title")}`;
+
+
+  // const handleChangeLang = () => {
+
+  // }
+
+  const handleChangeState = () => {
+    setState(!state);
+  }
 
   const handleApprove = async () => {
     try {
@@ -108,7 +119,7 @@ function App() {
       <div className="flex justify-between items-center p-5 lg:p-10">
         <div className="flex flex-col gap-2">
           <img className="max-w-32 z-10" src={CardPeople} alt="students-photo-card" />
-          <label className="font-primary text-white z-10">{studentCount} Students</label>
+          <label className="font-primary text-white z-10">{studentCount}{t("header.std")}</label>
         </div>
 
         <a href="https://virtuscoin.org"
@@ -116,8 +127,20 @@ function App() {
             border-2 rounded-tr-xl rounded-sm text-sm
             text-white p-1 h-10 border-[#38F682]
             shadow-md shadow-[#38f682] font-bold">
-          Visit our website
+            {t("header.site")}
         </a>
+
+        <div className="flex flex-col items-center justify-center mb-5">
+           <button onClick={handleChangeState}><img width={30} src="https://cdn-icons-png.flaticon.com/512/484/484531.png" alt="" /></button>
+           {state &&
+            <div className="mt-5 flex flex-col">
+              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">EN-US</button>
+              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">PT-BR</button>
+              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">ES</button>
+            </div>
+           }
+        </div>
+
       </div>
 
       <article className="mt-10 lg:flex">
@@ -126,18 +149,11 @@ function App() {
             {fullText}
           </h1>
           <p className="lg:w-6/12 lg:ml-10 text-white mt-2 lg:text-xl">
-              With our exclusive NFT, you will not only master English, but you 
-              will also have access to an immersive experience that will take you 
-              to a vast ecosystem in the metaverse.     
-              Here you will be able to interact with other users, participate in 
-              educational events and even make purchases in the real world using your tokens.     
-              Additionally, our future virtual environment will offer networking and collaborative 
-              learning opportunities, allowing you to practice your 
-              language skills in a practical and enjoyable way – all in one place!
+              {t("home.main")}
           </p>
           <Link to="section-buy" smooth={true} duration={800} className="bg-[#E748D8] rounded-tr-xl rounded-sm ml-5 lg:ml-20 flex items-center justify-center mt-5 p-1 
               text-white font-bold w-32">
-            Buy Now
+                {t("home.button")}
           </Link>
         </div>
         <div className="absolute top-72 right-0 w-20 h-20 blur-xl bg-[#138471]"></div>
@@ -151,17 +167,17 @@ function App() {
         <div className="flex items-center p-2 justify-center font-primary lg:mt-56 lg:gap-20 md:mt-56">
           <div className="flex flex-col items-center">
             <h4 className="text-xl text-white lg:text-3xl">{liquidity}</h4>
-            <label className="text-[12px] text-[#38F682]">Liquidity</label>
+            <label className="text-[12px] text-[#38F682]">{t("label.liq")}</label>
           </div>
           <hr className="border-[#38F682] rotate-90 w-10"></hr>
           <div className="flex flex-col items-center">
             <h4 className="text-xl text-white lg:text-3xl">{nftCount}</h4>
-            <label className="text-[12px] text-[#38F682]">NFT's Mintable</label>
+            <label className="text-[12px] text-[#38F682]">{t("label.nft")}</label>
           </div>
           <hr className="border-[#38F682] rotate-90 w-10"></hr>
           <div className="flex flex-col items-center">
             <h4 className="text-xl text-white lg:text-3xl">{userCount}</h4>
-            <label className="text-[12px] text-[#38F682]">Total Users</label>
+            <label className="text-[12px] text-[#38F682]">{t("label.user")}</label>
           </div>
         </div>
 
@@ -169,7 +185,7 @@ function App() {
           <img className="w-10/12 lg:w-[500px]" src={NFTasset} alt="NFT asset" />
           <div className="grid grid-cols-2 gap-10 items-center">
             <div>
-              <label className="text-white font-bold">Current Price</label>
+              <label className="text-white font-bold">{t("sell.labelPrice")}</label>
               <p className="font-primary text-white flex items-center gap-2">
                 50 USDT 
                 <img className="w-7" src={Usdt} alt="usdt-coin" />
@@ -188,18 +204,16 @@ function App() {
           <article className="w-10/12 border-2 h-auto mt-20 rounded-xl border-[#38f682]">
             <div className="flex flex-col items-center mt-10 p-2">
               <h3 className="font-primary text-2xl text-white">
-                Virtus Citizen #1
+                {t("community.main")}
               </h3>
-              <p><span className="font-bold text-[#38F682]">owned by </span><span className="font-bold text-[#E748D8]">on virtus</span></p>
+              <p><span className="font-bold text-[#38F682]">{t("community.ownerSt")}</span><span className="font-bold text-[#E748D8]">{t("community.ownerNd")}</span></p>
               <p className="text-white mt-8 lg:w-6/12 lg:text-center">
-                With our exclusive NFT, you'll master English while exploring a vast 
-                ecosystem in the metaverse, where you can even make real-world purchases – 
-                all in one place!
+                {t("community.paragraph")}
               </p>
 
               <a href="https://www.virtuscoin.org/white-paper" className="bg-[#E748D8] mt-20 p-2 rounded-md w-32 flex 
                   items-center justify-center text-white font-primary">
-                Learn more
+                    {t("community.learn")}
               </a>
             </div>
           </article>
@@ -208,15 +222,15 @@ function App() {
 
       <article className="h-auto md:flex md:justify-center">
          <div className=" p-5 mt-10">
-          <h3 className="text-[#38F682] font-primary text-xl">COMMUNITY DRIVEN</h3>
+          <h3 className="text-[#38F682] font-primary text-xl">{t("community.drive")}</h3>
           <p className="font-semibold text-white flex">
-            Our smart contract was developed by Next Chain, check out our code in the github repository 
+            {t("community.paragraphDrive")}
           </p>
           <a className="underline text-blue-600 font-bold text-md" href="https://github.com/nxchaindotlink/virtush-contract">
             NextChain github
           </a>
            <img className="rounded-xl mt-10"  src={Certified} alt="nxchain.link"/>
-           <a href="https://nxchain.link" className="text-white flex underline flex-col font-bold">Verify certification on Next Chain WebSite<span>Code: 10001</span></a>
+           <a href="https://nxchain.link" className="text-white flex underline flex-col font-bold">{t("community.verify")}<span>Code: 10001</span></a>
          </div>
       </article>
     </section>

@@ -7,6 +7,7 @@ import { polygon } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import "./input.css";
+import "../i18n/i18n.ts";
 
 const queryClient = new QueryClient();
 const projectId = `${import.meta.env.VITE_API_KEY}`;
