@@ -201,6 +201,8 @@ function App() {
             )}
           </div>
 
+          <iframe className="mt-20" width="560" height="315" src="https://www.youtube.com/embed/1jSYOvQPy4c?si=ZbyoxiRSmgoI-_XJ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+
           <article className="w-10/12 border-2 h-auto mt-20 rounded-xl border-[#38f682]">
             <div className="flex flex-col items-center mt-10 p-2">
               <h3 className="font-primary text-2xl text-white">
