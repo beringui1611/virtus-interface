@@ -1,0 +1,33 @@
+{
+    "header": {
+        "std": "Students",
+        "site": "Visit our website"
+    },
+
+    "home":{
+        "title": "GET YOUR PASSPORT RIGHT NOW & LEARN ENGLISH",
+        "main": "With our exclusive NFT, you will not only master English, but you will also have access to an immersive experience that will take you to a vast ecosystem in the metaverse. Here you will be able to interact with other users, participate in educational events and even make purchases in the real world using your tokens. Additionally, our future virtual environment will offer networking and collaborative learning opportunities, allowing you to practice your language skills in a practical and enjoyable way – all in one place!",
+        "button": "Buy Now!"
+    },
+
+    "label": {
+        "liq": "Liquidity",
+        "nft": "NFT's Mintable",
+        "user": "Total Users"
+    },
+
+    "sell": {
+        "labelPrice": "Current Price:"
+    },
+
+    "community": {
+        "main": "Virtus Citizen #1",
+        "ownerSt": "owned by",
+        "ownerNd": "on Virtus",
+        "paragraph": "With our exclusive NFT, you'll master English while exploring a vast ecosystem in the metaverse, where you can even make real-world purchases – all in one place!",
+        "learn": "Learn more",
+        "drive": "COMMUNITY DRIVE",
+        "paragraphDrive": "Our smart contract was developed by Next Chain, check out our code in the github repository",
+        "verify": "Verify certification on Next Chain WebSite"
+    }
+}
