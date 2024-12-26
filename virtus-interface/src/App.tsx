@@ -109,7 +109,7 @@ function App() {
 
 
   return (
-    <section className='bg-[#102A2B] h-auto'>
+    <section className='bg-[#102A2B] h-auto overflow-x-hidden'>
       <div className="absolute w-20 h-20 blur-xl bg-[#138471]"></div>
       <div className="flex flex-col justify-between items-center p-5 lg:p-10 md:flex-row">
         <div className="flex flex-col gap-2">
