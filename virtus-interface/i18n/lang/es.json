@@ -1,0 +1,33 @@
+{
+    "header": {
+        "std": "Estudiantes",
+        "site": "Visita nuestro sitio web"
+    },
+
+    "home": {
+        "title": "¡OBTÉN TU PASAPORTE AHORA MISMO Y APRENDE INGLÉS!",
+        "main": "Con nuestro NFT exclusivo, no solo dominarás el inglés, sino que también tendrás acceso a una experiencia inmersiva que te llevará a un vasto ecosistema en el metaverso. Aquí podrás interactuar con otros usuarios, participar en eventos educativos e incluso hacer compras en el mundo real utilizando tus tokens. Además, nuestro futuro entorno virtual ofrecerá oportunidades de networking y aprendizaje colaborativo, permitiéndote practicar tus habilidades lingüísticas de manera práctica y divertida, ¡todo en un solo lugar!",
+        "button": "¡Compra ahora!"
+    },
+
+    "label": {
+        "liq": "Liquidez",
+        "nft": "NFT's acuñables",
+        "user": "Usuarios totales"
+    },
+
+    "sell": {
+        "labelPrice": "Precio actual:"
+    },
+
+    "community": {
+        "main": "Virtus Citizen #1",
+        "ownerSt": "propiedad de",
+        "ownerNd": "en Virtus",
+        "paragraph": "Con nuestro NFT exclusivo, dominarás el inglés mientras exploras un vasto ecosistema en el metaverso, ¡donde incluso podrás hacer compras en el mundo real, todo en un solo lugar!",
+        "learn": "Aprende más",
+        "drive": "CONDUCCIÓN DE LA COMUNIDAD",
+        "paragraphDrive": "Nuestro contrato inteligente fue desarrollado por Next Chain, consulta nuestro código en el repositorio de github",
+        "verify": "Verificar certificación en el sitio web de Next Chain"
+    }
+}
