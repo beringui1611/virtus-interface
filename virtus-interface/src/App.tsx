@@ -126,12 +126,12 @@ function App() {
 
               <div className="flex gap-2">
                 <img  width={20} src="https://cdn-icons-png.flaticon.com/128/197/197386.png" alt="en-us"/>
-                <button onClick={() => handleChangeLang("pt")} className="text-white font-bold ">EN-US</button>
+                <button onClick={() => handleChangeLang("pt")} className="text-white font-bold ">PT-BR</button>
               </div>
               
               <div className="flex gap-2">
                 <img  width={20} src="https://cdn-icons-png.flaticon.com/128/10601/10601048.png" alt="en-us"/>
-                <button onClick={() => handleChangeLang("es")} className="text-white font-bold ">EN-US</button>
+                <button onClick={() => handleChangeLang("es")} className="text-white font-bold ">ES</button>
               </div>
             </div>
         </div>
