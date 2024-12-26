@@ -30,7 +30,6 @@ function App() {
   const [nftCount, setNftCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const {address, isConnected } = useAccount();
-  const [state, setState] = useState(false);
   const {writeContract} = useWriteContract();
   const nextTokenId = useNextTokenId();
   const { t, i18n} = useTranslation();
@@ -39,10 +38,6 @@ function App() {
 
   const handleChangeLang = (lg: string) => {
      i18n.changeLanguage(lg)
-  }
-
-  const handleChangeState = () => {
-    setState(!state);
   }
 
   const handleApprove = async () => {
@@ -116,10 +111,29 @@ function App() {
   return (
     <section className='bg-[#102A2B] h-auto'>
       <div className="absolute w-20 h-20 blur-xl bg-[#138471]"></div>
-      <div className="flex justify-between items-center p-5 lg:p-10">
+      <div className="flex flex-col justify-between items-center p-5 lg:p-10 md:flex">
         <div className="flex flex-col gap-2">
           <img className="max-w-32 z-10" src={CardPeople} alt="students-photo-card" />
           <label className="font-primary text-white z-10">{studentCount}{t("header.std")}</label>
+        </div>
+
+        <div className="flex items-center justify-center mb-5 bg-white rounded-lg bg-opacity-35 p-2 w-80 mt-2">          
+           <div className="flex items-center justify-center gap-5">
+              <div className="flex gap-2">
+                <img  width={20} src="https://cdn-icons-png.flaticon.com/128/197/197484.png" alt="en-us"/>
+                <button onClick={() => handleChangeLang("en")} className="text-white font-bold ">EN-US</button>
+              </div>
+
+              <div className="flex gap-2">
+                <img  width={20} src="https://cdn-icons-png.flaticon.com/128/197/197386.png" alt="en-us"/>
+                <button onClick={() => handleChangeLang("pt")} className="text-white font-bold ">EN-US</button>
+              </div>
+              
+              <div className="flex gap-2">
+                <img  width={20} src="https://cdn-icons-png.flaticon.com/128/10601/10601048.png" alt="en-us"/>
+                <button onClick={() => handleChangeLang("es")} className="text-white font-bold ">EN-US</button>
+              </div>
+            </div>
         </div>
 
         <a href="https://virtuscoin.org"
@@ -129,18 +143,6 @@ function App() {
             shadow-md shadow-[#38f682] font-bold">
             {t("header.site")}
         </a>
-
-        <div className="flex flex-col items-center justify-center mb-5">
-           <button onClick={handleChangeState}><img width={30} src="https://cdn-icons-png.flaticon.com/512/484/484531.png" alt="" /></button>
-           {state &&
-            <div className="mt-5 flex flex-col">
-              <button onClick={() => handleChangeLang("en")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">EN-US</button>
-              <button onClick={() => handleChangeLang("pt")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">PT-BR</button>
-              <button onClick={() => handleChangeLang("es")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">ES</button>
-            </div>
-           }
-        </div>
-
       </div>
 
       <article className="mt-10 lg:flex">
