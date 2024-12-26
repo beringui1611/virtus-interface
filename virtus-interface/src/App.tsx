@@ -33,13 +33,13 @@ function App() {
   const [state, setState] = useState(false);
   const {writeContract} = useWriteContract();
   const nextTokenId = useNextTokenId();
-  const { t } = useTranslation();
+  const { t, i18n} = useTranslation();
   const fullText = `${t("home.title")}`;
 
 
-  // const handleChangeLang = () => {
-
-  // }
+  const handleChangeLang = (lg: string) => {
+     i18n.changeLanguage(lg)
+  }
 
   const handleChangeState = () => {
     setState(!state);
@@ -134,9 +134,9 @@ function App() {
            <button onClick={handleChangeState}><img width={30} src="https://cdn-icons-png.flaticon.com/512/484/484531.png" alt="" /></button>
            {state &&
             <div className="mt-5 flex flex-col">
-              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">EN-US</button>
-              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">PT-BR</button>
-              <button className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">ES</button>
+              <button onClick={() => handleChangeLang("en")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">EN-US</button>
+              <button onClick={() => handleChangeLang("pt")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">PT-BR</button>
+              <button onClick={() => handleChangeLang("es")} className="text-white font-bold hover:bg-slate-200 hover:bg-opacity-25 hover:p-1">ES</button>
             </div>
            }
         </div>
